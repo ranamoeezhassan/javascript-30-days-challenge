@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Scoped CSS Variables and JS</title>
-  <link rel="icon" href="https://fav.farm/✅" />
+  <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
@@ -19,22 +19,23 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img src="https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g">
 
   <style>
-    :root {
-      --base: #ffc600;
+    :root{ 
+      --base: yellow;
       --spacing: 10px;
       --blur: 10px;
     }
 
     img {
+      max-width: 400px;
       padding: var(--spacing);
       background: var(--base);
       filter: blur(var(--blur));
     }
 
-    .hl {
+    .h1 {
       color: var(--base);
     }
 
@@ -61,17 +62,18 @@
   </style>
 
   <script>
-    const inputs = document.querySelectorAll('.controls input');
+    const inputs = document.querySelectorAll(".controls input");
+    const r = document.querySelector(":root");
 
-    function handleUpdate() {
+    function handleUpdate(){
       const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      document.querySelector(":root").style.setProperty(`--${this.name}` , `${this.value}${suffix}`);
     }
 
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-  </script>
+    inputs.forEach( input => input.addEventListener("change", handleUpdate))
+    inputs.forEach( input => input.addEventListener("mousemove", handleUpdate))
 
+  </script>
 
 </body>
 </html>
