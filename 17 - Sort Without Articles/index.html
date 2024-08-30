@@ -11,7 +11,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      /* background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000"); */
       background-size: cover;
       display: flex;
       align-items: center;
@@ -24,7 +24,9 @@
       background: white;
       width: 500px;
       margin: auto;
-      padding: 0;
+      padding: 0px;
+      margin-top: 100px;
+      margin-bottom: 100px;
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
     }
 
@@ -44,11 +46,30 @@
 
   </style>
 
-  <ul id="bands"></ul>
+  <ul id="bands">Press any key to populate the list</ul>
 
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+const bandsElement = document.querySelector("#bands");
 
+function sort(){
+  bandsElement.replaceChildren();
+  bands.sort((a, b) => {
+    const regex = new RegExp('^(A|The|An)\\s+', 'i')
+    const bandA = a.replace(regex, '').trim();
+    const bandB = b.replace(regex, '').trim();
+
+    return bandA > bandB ? 1 : -1;
+  })
+
+  bands.forEach(band => {
+  const child = document.createElement("li");
+  child.innerText = band;
+  bandsElement.appendChild(child);
+})
+}
+
+window.addEventListener("keydown", sort)
 
 </script>
 
