@@ -183,6 +183,38 @@
     </li>
   </ul>
 <script>
+  // This was my way of approaching this problem before I looked at Wes' solution
+    // const videoItems = document.querySelector("ul").querySelectorAll("li");
+    // let totalTime = 0;
+    // videoItems.forEach(videoItem => {
+    //   const regexMinutes = /[0-9]+:/;
+    //   let minutes = regexMinutes.exec(videoItem.dataset.time)[0];
+    //   minutes = minutes.replace(":", "");
+
+    //   const regexSeconds = /:[0-9]+/;
+    //   let seconds = regexSeconds.exec(videoItem.dataset.time)[0];
+    //   seconds = seconds.replace(":", "");
+
+    //   totalTime += (Number(minutes) * 60) + Number(seconds);
+    // })
+
+    const videoItems = Array.from(document.querySelector("ul").querySelectorAll("li"));
+    const totalTime = videoItems
+    .map((videoItem) => videoItem.dataset.time)
+    .map((timeCode) => {
+      const [mins, secs] = timeCode.split(":");
+      return (Number(mins) * 60) + Number(secs);
+    })
+    .reduce((accumulator, currentElement) => accumulator + currentElement, 0);
+
+    const hours = Math.floor(totalTime / 3600);
+    const minutes = Math.floor((totalTime % 3600)/ 60);
+    const seconds = (totalTime % 3600) % 60;
+    const time =  `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    console.log("Total time in seconds: " + totalTime + "s");
+    console.log("Total time taken in format: " + time);
+
 </script>
 </body>
 </html>
