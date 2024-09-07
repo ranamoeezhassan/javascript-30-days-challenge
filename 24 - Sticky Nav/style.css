@@ -25,14 +25,10 @@ body {
   transition: transform 0.5s;
 }
 
-body.fixed-nav .site-wrap {
-  transform: scale(1);
-}
-
 header {
   text-align: center;
   height: 50vh;
-  background: url(https://source.unsplash.com/GKN6rpDr0EI/960x640) bottom center no-repeat;
+  background: url(https://media.cntraveler.com/photos/5eb18e42fc043ed5d9779733/16:9/w_4288,h_2412,c_limit/BlackForest-Germany-GettyImages-147180370.jpg) bottom center no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -49,19 +45,14 @@ nav {
   background: black;
   top: 0;
   width: 100%;
-  transition:all 0.5s;
+  transition: all 0.5s;
   position: relative;
   z-index: 1;
 }
 
-body.fixed-nav nav {
-  position: fixed;
-  box-shadow: 0 5px 0 rgba(0,0,0,0.1);
-}
-
 nav ul {
   margin: 0;
-  padding: 0;
+  padding:0;
   list-style: none;
   display: flex;
 }
@@ -78,17 +69,17 @@ li.logo {
   max-width: 0;
   overflow: hidden;
   background: white;
-  transition: all 0.5s;
+  transition: all .5s;
   font-weight: 600;
   font-size: 30px;
 }
 
-li.logo a {
-  color: black;
-}
-
 .fixed-nav li.logo {
   max-width: 500px;
+}
+
+li.logo a {
+  color: black;
 }
 
 nav a {
@@ -98,4 +89,9 @@ nav a {
   color: white;
   transition: all 0.2s;
   text-transform: uppercase;
+}
+
+.fixed-nav {
+  position: sticky;
+  top: 0;
 }
